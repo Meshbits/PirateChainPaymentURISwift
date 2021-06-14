@@ -14,7 +14,7 @@ public class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
     /// Closure to do the builder.
     typealias buildBitcoinPaymentURIClosure = (BitcoinPaymentURI) -> Void
     
-    fileprivate static let SCHEME = "arrr://"
+    fileprivate static let SCHEME = "arrr"
     fileprivate static let PARAMETER_AMOUNT = "amount"
     fileprivate static let PARAMETER_LABEL = "label"
     fileprivate static let PARAMETER_MESSAGE = "message"
@@ -121,8 +121,8 @@ public class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
     open var uri: String? {
         get {
             var urlComponents = URLComponents()
-            urlComponents.scheme = BitcoinPaymentURI.SCHEME.replacingOccurrences(of: ":", with: "");
-            urlComponents.path = self.address!;
+            urlComponents.scheme = BitcoinPaymentURI.SCHEME
+            urlComponents.host = self.address!;
             urlComponents.queryItems = []
             
             guard let allParameters = self.allParameters else {
@@ -138,7 +138,6 @@ public class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
                 
                 urlComponents.queryItems?.append(URLQueryItem(name: key, value: value.value))
             }
-            
             return urlComponents.string
         }
     }
@@ -168,19 +167,21 @@ public class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
         guard let _ = bitcoinPaymentURI.range(of: SCHEME, options: NSString.CompareOptions.caseInsensitive, range: schemeRange) else {
             return nil
         }
+                
+        let url:URL = URL(string: String(bitcoinPaymentURI))!
         
-        let urlComponents = URLComponents(string: String(bitcoinPaymentURI))
-        
-        guard let address = urlComponents?.path, !address.isEmpty else {
+        guard let address = url.host else {
             return nil
         }
-        
+
+        let urlComponents = QueryParameters.init(url: url).queryItems
+      
         return BitcoinPaymentURI(build: {
             $0.address = address
             var newParameters: [String: Parameter] = [:]
             
-            if let queryItems = urlComponents?.queryItems {
-                for queryItem in queryItems {
+            if urlComponents.count > 0 {
+                for queryItem in urlComponents {
                     guard let value = queryItem.value else {
                         continue
                     }
@@ -199,4 +200,18 @@ public class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
         })
     }
 
+}
+
+extension URL {
+    var getQueryParameters: QueryParameters { return QueryParameters(url: self) }
+}
+
+class QueryParameters {
+    let queryItems: [URLQueryItem]
+    init(url: URL?) {
+        queryItems = URLComponents(string: url?.absoluteString ?? "")?.queryItems ?? []
+    }
+    subscript(name: String) -> String? {
+        return queryItems.first(where: { $0.name == name })?.value
+    }
 }
