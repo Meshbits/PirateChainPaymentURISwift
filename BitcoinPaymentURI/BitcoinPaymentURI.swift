@@ -9,7 +9,7 @@
 import Foundation
 
 /// The Bitcoin Payment URI.
-open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
+public class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
     
     /// Closure to do the builder.
     typealias buildBitcoinPaymentURIClosure = (BitcoinPaymentURI) -> Void
