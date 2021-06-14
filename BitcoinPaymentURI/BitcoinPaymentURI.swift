@@ -14,7 +14,7 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
     /// Closure to do the builder.
     typealias buildBitcoinPaymentURIClosure = (BitcoinPaymentURI) -> Void
     
-    fileprivate static let SCHEME = "arrr:"
+    fileprivate static let SCHEME = "arrr://"
     fileprivate static let PARAMETER_AMOUNT = "amount"
     fileprivate static let PARAMETER_LABEL = "label"
     fileprivate static let PARAMETER_MESSAGE = "message"
