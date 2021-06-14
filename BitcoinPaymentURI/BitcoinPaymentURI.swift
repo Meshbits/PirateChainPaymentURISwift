@@ -12,7 +12,7 @@ import Foundation
 public class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
     
     /// Closure to do the builder.
-    typealias buildBitcoinPaymentURIClosure = (BitcoinPaymentURI) -> Void
+    public typealias buildBitcoinPaymentURIClosure = (BitcoinPaymentURI) -> Void
     
     fileprivate static let SCHEME = "arrr"
     fileprivate static let PARAMETER_AMOUNT = "amount"
@@ -21,8 +21,6 @@ public class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
     fileprivate static let PARAMETER_REQUIRED_PREFIX = "req-"
 
     fileprivate var allParameters: [String: Parameter]?
-
-    public init() {}
 
     /// The address.
     open var address: String?
