@@ -22,6 +22,8 @@ public class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
 
     fileprivate var allParameters: [String: Parameter]?
 
+    public init() {}
+
     /// The address.
     open var address: String?
     
