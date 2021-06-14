@@ -19,7 +19,7 @@ $ brew install carthage
 To integrate BitcoinPaymentURISwift into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Meshbits/PirateChainPaymentURISwift" ~> 1.0.0
+github "Meshbits/PirateChainPaymentURISwift" "piratechain"
 ```
 
 Run `carthage update` to build the framework and drag the built `BitcoinPaymentURI.framework` into your Xcode project.
