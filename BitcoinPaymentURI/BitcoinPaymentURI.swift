@@ -14,7 +14,7 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
     /// Closure to do the builder.
     typealias buildBitcoinPaymentURIClosure = (BitcoinPaymentURI) -> Void
     
-    fileprivate static let SCHEME = "bitcoin:"
+    fileprivate static let SCHEME = "arrr:"
     fileprivate static let PARAMETER_AMOUNT = "amount"
     fileprivate static let PARAMETER_LABEL = "label"
     fileprivate static let PARAMETER_MESSAGE = "message"
@@ -159,9 +159,9 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
      
       - returns: a BitcoinPaymentURI.
     */
-    open static func parse(_ bitcoinPaymentURI: String) -> BitcoinPaymentURI? {
-        let schemeRange = Range<String.Index>(bitcoinPaymentURI.characters.index(bitcoinPaymentURI.startIndex, offsetBy: 0)..<bitcoinPaymentURI.characters.index(bitcoinPaymentURI.startIndex, offsetBy: SCHEME.characters.count))
-        let paramReqRange = Range<String.Index>(bitcoinPaymentURI.characters.index(bitcoinPaymentURI.startIndex, offsetBy: 0)..<bitcoinPaymentURI.characters.index(bitcoinPaymentURI.startIndex, offsetBy: PARAMETER_REQUIRED_PREFIX.characters.count))
+    public static func parse(_ bitcoinPaymentURI: String) -> BitcoinPaymentURI? {
+        let schemeRange = bitcoinPaymentURI.index(bitcoinPaymentURI.startIndex, offsetBy: 0)..<bitcoinPaymentURI.index(bitcoinPaymentURI.startIndex, offsetBy: SCHEME.count)
+        let paramReqRange = bitcoinPaymentURI.index(bitcoinPaymentURI.startIndex, offsetBy: 0)..<bitcoinPaymentURI.index(bitcoinPaymentURI.startIndex, offsetBy: PARAMETER_REQUIRED_PREFIX.count)
 
         guard let _ = bitcoinPaymentURI.range(of: SCHEME, options: NSString.CompareOptions.caseInsensitive, range: schemeRange) else {
             return nil
@@ -185,7 +185,7 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
                     
                     var required: Bool = true
                     
-                    if (queryItem.name.characters.count <= PARAMETER_REQUIRED_PREFIX.characters.count || queryItem.name.range(of: PARAMETER_REQUIRED_PREFIX, options: NSString.CompareOptions.caseInsensitive, range: paramReqRange) == nil) {
+                    if (queryItem.name.count <= PARAMETER_REQUIRED_PREFIX.count || queryItem.name.range(of: PARAMETER_REQUIRED_PREFIX, options: NSString.CompareOptions.caseInsensitive, range: paramReqRange) == nil) {
                         required = false
                     }
                     

