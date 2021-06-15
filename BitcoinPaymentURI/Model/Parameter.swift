@@ -1,6 +1,6 @@
 //
 //  Parameter.swift
-//  BitcoinPaymentURI
+//  PirateChainPaymentURI
 //
 //  Created by Sandro Machado on 12/07/16.
 //  Copyright © 2016 Sandro. All rights reserved.

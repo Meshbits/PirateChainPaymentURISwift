@@ -1,14 +1,13 @@
 //
-//  BitcoinPaymentURIProtocol.swift
-//  BitcoinPaymentURI
+//  PirateChainPaymentURIProtocol.swift
+//  PirateChainPaymentURI
 //
-//  Created by Sandro Machado on 12/07/16.
-//  Copyright © 2016 Sandro. All rights reserved.
+//  Created by Lokesh Sehgal on 15/06/21.
 //
 
 import Foundation
 
-protocol BitcoinPaymentURIProtocol {
+protocol PirateChainPaymentURIProtocol {
     
     var address: String? { get }
     

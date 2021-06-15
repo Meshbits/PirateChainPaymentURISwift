@@ -1,18 +1,18 @@
 //
-//  BitcoinPaymentURITests.swift
-//  BitcoinPaymentURITests
+//  PirateChainPaymentURITests.swift
+//  PirateChainPaymentURITests
 //
 //  Created by Sandro Machado on 12/07/16.
 //  Copyright © 2016 Sandro. All rights reserved.
 //
 
 import XCTest
-@testable import BitcoinPaymentURI
+@testable import PirateChainPaymentURI
 
-class BitcoinPaymentURITests: XCTestCase {
+class PirateChainPaymentURITests: XCTestCase {
     
     func testParseForAddressMethod() {
-        let bpuri = BitcoinPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W")
+        let bpuri = PirateChainPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W")
         
         XCTAssertEqual(bpuri?.address!, "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W", "Failed: Wrong value.")
         XCTAssertNil(bpuri?.amount)
@@ -22,7 +22,7 @@ class BitcoinPaymentURITests: XCTestCase {
     }
     
     func testParseForAddressWithNameMethod() {
-        let bpuri = BitcoinPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?label=Luke-Jr")
+        let bpuri = PirateChainPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?label=Luke-Jr")
         
         XCTAssertEqual(bpuri?.address!, "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W", "Failed: Wrong value.")
         XCTAssertNil(bpuri?.amount)
@@ -32,7 +32,7 @@ class BitcoinPaymentURITests: XCTestCase {
     }
     
     func testParseForAddressWithAmountAndNameMethod() {
-        let bpuri = BitcoinPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=20.3&label=Luke-Jr")
+        let bpuri = PirateChainPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=20.3&label=Luke-Jr")
         
         XCTAssertEqual(bpuri?.address!, "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W", "Failed: Wrong value.")
         XCTAssertEqual(bpuri?.amount, 20.3, "Failed: Wrong value.")
@@ -42,7 +42,7 @@ class BitcoinPaymentURITests: XCTestCase {
     }
     
     func testParseForAddressWithAmountAndNameAndMessageMethod() {
-        let bpuri = BitcoinPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz")
+        let bpuri = PirateChainPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz")
         
         XCTAssertEqual(bpuri?.address!, "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W", "Failed: Wrong value.")
         XCTAssertEqual(bpuri?.amount, 50, "Failed: Wrong value.")
@@ -52,7 +52,7 @@ class BitcoinPaymentURITests: XCTestCase {
     }
     
     func testParseForAddressWithAmountAndNameAndMessageAndParametersMethod() {
-        let bpuri = BitcoinPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?somethingyoudontunderstand=50&somethingelseyoudontget=999&r=https%3A%2F%2Ffoo.com%2Fi%2F7BpFbVsnh5PUisfh&req-app=appname")
+        let bpuri = PirateChainPaymentURI.parse("bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?somethingyoudontunderstand=50&somethingelseyoudontget=999&r=https%3A%2F%2Ffoo.com%2Fi%2F7BpFbVsnh5PUisfh&req-app=appname")
         
         XCTAssertEqual(bpuri?.address!, "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W", "Failed: Wrong value.")
         XCTAssertNil(bpuri?.amount)
@@ -67,9 +67,9 @@ class BitcoinPaymentURITests: XCTestCase {
     }
     
     func testParseForInvalidAddressesMethod() {
-        let bpuri1 = BitcoinPaymentURI.parse("bitcoinX:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?somethingyoudontunderstand=50")
-        let bpuri2 = BitcoinPaymentURI.parse("bitcoin175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?somethingyoudontunderstand=50")
-        let bpuri3 = BitcoinPaymentURI.parse("bitcoin:?somethingyoudontunderstand=50")
+        let bpuri1 = PirateChainPaymentURI.parse("bitcoinX:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?somethingyoudontunderstand=50")
+        let bpuri2 = PirateChainPaymentURI.parse("bitcoin175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?somethingyoudontunderstand=50")
+        let bpuri3 = PirateChainPaymentURI.parse("bitcoin:?somethingyoudontunderstand=50")
 
         XCTAssertNil(bpuri1)
         XCTAssertNil(bpuri2)
@@ -77,7 +77,7 @@ class BitcoinPaymentURITests: XCTestCase {
     }
     
     func testBuilder() {
-        let bpuri: BitcoinPaymentURI = BitcoinPaymentURI(build: {
+        let bpuri: PirateChainPaymentURI = PirateChainPaymentURI(build: {
             $0.address = "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W"
             $0.amount = 50.0
             $0.label = "Luke-Jr"

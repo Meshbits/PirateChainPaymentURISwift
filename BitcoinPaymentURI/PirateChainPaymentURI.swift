@@ -1,6 +1,6 @@
 //
-//  BitcoinPaymentURI.swift
-//  BitcoinPaymentURI
+//  PirateChainPaymentURI.swift
+//  PirateChainPaymentURI
 //
 //  Created by Sandro Machado on 12/07/16.
 //  Copyright © 2016 Sandro. All rights reserved.
@@ -9,10 +9,10 @@
 import Foundation
 
 /// The Bitcoin Payment URI.
-open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
+open class PirateChainPaymentURI: PirateChainPaymentURIProtocol {
     
     /// Closure to do the builder.
-    public typealias buildBitcoinPaymentURIClosure = (BitcoinPaymentURI) -> Void
+    public typealias buildPirateChainPaymentURIClosure = (PirateChainPaymentURI) -> Void
     
     fileprivate static let SCHEME = "arrr"
     fileprivate static let PARAMETER_AMOUNT = "amount"
@@ -32,11 +32,11 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
                 return
             }
             
-            self.allParameters?[BitcoinPaymentURI.PARAMETER_AMOUNT] = Parameter(value: String(newValue), required: false)
+            self.allParameters?[PirateChainPaymentURI.PARAMETER_AMOUNT] = Parameter(value: String(newValue), required: false)
         }
         
         get {
-            guard let parameters = self.allParameters, let amount = parameters[BitcoinPaymentURI.PARAMETER_AMOUNT]?.value else {
+            guard let parameters = self.allParameters, let amount = parameters[PirateChainPaymentURI.PARAMETER_AMOUNT]?.value else {
                 return nil
             }
             
@@ -51,11 +51,11 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
                 return
             }
             
-            self.allParameters?[BitcoinPaymentURI.PARAMETER_LABEL] = Parameter(value: newValue, required: false)
+            self.allParameters?[PirateChainPaymentURI.PARAMETER_LABEL] = Parameter(value: newValue, required: false)
         }
         
         get {
-            guard let parameters = self.allParameters, let label = parameters[BitcoinPaymentURI.PARAMETER_LABEL]?.value else {
+            guard let parameters = self.allParameters, let label = parameters[PirateChainPaymentURI.PARAMETER_LABEL]?.value else {
                 return nil
             }
             
@@ -70,11 +70,11 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
                 return
             }
             
-            self.allParameters?[BitcoinPaymentURI.PARAMETER_MESSAGE] = Parameter(value: newValue, required: false)
+            self.allParameters?[PirateChainPaymentURI.PARAMETER_MESSAGE] = Parameter(value: newValue, required: false)
         }
 
         get {
-            guard let parameters = self.allParameters, let label = parameters[BitcoinPaymentURI.PARAMETER_MESSAGE]?.value else {
+            guard let parameters = self.allParameters, let label = parameters[PirateChainPaymentURI.PARAMETER_MESSAGE]?.value else {
                 return nil
             }
             
@@ -107,9 +107,9 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
                 return nil
             }
             
-            parametersFiltered.removeValue(forKey: BitcoinPaymentURI.PARAMETER_AMOUNT)
-            parametersFiltered.removeValue(forKey: BitcoinPaymentURI.PARAMETER_LABEL)
-            parametersFiltered.removeValue(forKey: BitcoinPaymentURI.PARAMETER_MESSAGE)
+            parametersFiltered.removeValue(forKey: PirateChainPaymentURI.PARAMETER_AMOUNT)
+            parametersFiltered.removeValue(forKey: PirateChainPaymentURI.PARAMETER_LABEL)
+            parametersFiltered.removeValue(forKey: PirateChainPaymentURI.PARAMETER_MESSAGE)
             
             return parametersFiltered
         }
@@ -119,7 +119,7 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
     open var uri: String? {
         get {
             var urlComponents = URLComponents()
-            urlComponents.scheme = BitcoinPaymentURI.SCHEME
+            urlComponents.scheme = PirateChainPaymentURI.SCHEME
             urlComponents.host = self.address!;
             urlComponents.queryItems = []
             
@@ -129,7 +129,7 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
             
             for (key, value) in allParameters {
                 if (value.required) {
-                    urlComponents.queryItems?.append(URLQueryItem(name: "\(BitcoinPaymentURI.PARAMETER_REQUIRED_PREFIX)\(key)", value: value.value))
+                    urlComponents.queryItems?.append(URLQueryItem(name: "\(PirateChainPaymentURI.PARAMETER_REQUIRED_PREFIX)\(key)", value: value.value))
                     
                     continue
                 }
@@ -143,30 +143,30 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
     /**
       Constructor.
      
-      - parameter build: The builder to generate a BitcoinPaymentURI.
+      - parameter build: The builder to generate a PirateChainPaymentURI.
     */
-    public init(build: buildBitcoinPaymentURIClosure) {
+    public init(build: buildPirateChainPaymentURIClosure) {
         allParameters = [:]
 
         build(self)
     }
     
     /**
-      Converts a String to a BitcoinPaymentURI.
+      Converts a String to a PirateChainPaymentURI.
      
-      - parameter bitcoinPaymentURI: The string with the Bitcoin Payment URI.
+      - parameter pirateChainPaymentURI: The string with the Bitcoin Payment URI.
      
-      - returns: a BitcoinPaymentURI.
+      - returns: a PirateChainPaymentURI.
     */
-    public static func parse(_ bitcoinPaymentURI: String) -> BitcoinPaymentURI? {
-        let schemeRange = bitcoinPaymentURI.index(bitcoinPaymentURI.startIndex, offsetBy: 0)..<bitcoinPaymentURI.index(bitcoinPaymentURI.startIndex, offsetBy: SCHEME.count)
-        let paramReqRange = bitcoinPaymentURI.index(bitcoinPaymentURI.startIndex, offsetBy: 0)..<bitcoinPaymentURI.index(bitcoinPaymentURI.startIndex, offsetBy: PARAMETER_REQUIRED_PREFIX.count)
+    public static func parse(_ pirateChainPaymentURI: String) -> PirateChainPaymentURI? {
+        let schemeRange = pirateChainPaymentURI.index(pirateChainPaymentURI.startIndex, offsetBy: 0)..<pirateChainPaymentURI.index(pirateChainPaymentURI.startIndex, offsetBy: SCHEME.count)
+        let paramReqRange = pirateChainPaymentURI.index(pirateChainPaymentURI.startIndex, offsetBy: 0)..<pirateChainPaymentURI.index(pirateChainPaymentURI.startIndex, offsetBy: PARAMETER_REQUIRED_PREFIX.count)
 
-        guard let _ = bitcoinPaymentURI.range(of: SCHEME, options: NSString.CompareOptions.caseInsensitive, range: schemeRange) else {
+        guard let _ = pirateChainPaymentURI.range(of: SCHEME, options: NSString.CompareOptions.caseInsensitive, range: schemeRange) else {
             return nil
         }
                 
-        let url:URL = URL(string: String(bitcoinPaymentURI))!
+        let url:URL = URL(string: String(pirateChainPaymentURI))!
         
         guard let address = url.host else {
             return nil
@@ -174,7 +174,7 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
 
         let urlComponents = QueryParameters.init(url: url).queryItems
       
-        return BitcoinPaymentURI(build: {
+        return PirateChainPaymentURI(build: {
             $0.address = address
             var newParameters: [String: Parameter] = [:]
             
