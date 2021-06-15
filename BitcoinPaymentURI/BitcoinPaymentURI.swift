@@ -145,7 +145,7 @@ open class BitcoinPaymentURI: BitcoinPaymentURIProtocol {
      
       - parameter build: The builder to generate a BitcoinPaymentURI.
     */
-    init(build: buildBitcoinPaymentURIClosure) {
+    public init(build: buildBitcoinPaymentURIClosure) {
         allParameters = [:]
 
         build(self)
