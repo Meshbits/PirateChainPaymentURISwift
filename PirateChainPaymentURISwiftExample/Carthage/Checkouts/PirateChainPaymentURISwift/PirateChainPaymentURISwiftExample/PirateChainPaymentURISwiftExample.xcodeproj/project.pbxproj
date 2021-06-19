@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291D111A2678E66F005ECFFA /* PirateChainPaymentURI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291D11182678E667005ECFFA /* PirateChainPaymentURI.framework */; };
+		291D111B2678E66F005ECFFA /* PirateChainPaymentURI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 291D11182678E667005ECFFA /* PirateChainPaymentURI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		292724192677A19900D5FF1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292724182677A19900D5FF1A /* AppDelegate.swift */; };
 		2927241B2677A19900D5FF1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927241A2677A19900D5FF1A /* SceneDelegate.swift */; };
 		2927241D2677A19900D5FF1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927241C2677A19900D5FF1A /* ViewController.swift */; };
 		292724202677A19900D5FF1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2927241E2677A19900D5FF1A /* Main.storyboard */; };
 		292724222677A19C00D5FF1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292724212677A19C00D5FF1A /* Assets.xcassets */; };
 		292724252677A19C00D5FF1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 292724232677A19C00D5FF1A /* LaunchScreen.storyboard */; };
-		298278D4267E255400CAD9CE /* PirateChainPaymentURI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298278D2267E254C00CAD9CE /* PirateChainPaymentURI.framework */; };
-		298278D5267E255400CAD9CE /* PirateChainPaymentURI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 298278D2267E254C00CAD9CE /* PirateChainPaymentURI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -34,13 +34,13 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		29167DF3267E1D7700DE52E9 /* Embed Frameworks */ = {
+		29F844502677BBC100C9D53E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				298278D5267E255400CAD9CE /* PirateChainPaymentURI.framework in Embed Frameworks */,
+				291D111B2678E66F005ECFFA /* PirateChainPaymentURI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		291D11182678E667005ECFFA /* PirateChainPaymentURI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PirateChainPaymentURI.framework; path = Carthage/Build/iOS/PirateChainPaymentURI.framework; sourceTree = "<group>"; };
 		292724152677A19900D5FF1A /* PirateChainPaymentURISwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PirateChainPaymentURISwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		292724182677A19900D5FF1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2927241A2677A19900D5FF1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		292724212677A19C00D5FF1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		292724242677A19C00D5FF1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		292724262677A19C00D5FF1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		298278D2267E254C00CAD9CE /* PirateChainPaymentURI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PirateChainPaymentURI.framework; path = Carthage/Build/iOS/PirateChainPaymentURI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				298278D4267E255400CAD9CE /* PirateChainPaymentURI.framework in Frameworks */,
+				291D111A2678E66F005ECFFA /* PirateChainPaymentURI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +105,7 @@
 		29F844462677B9D200C9D53E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				298278D2267E254C00CAD9CE /* PirateChainPaymentURI.framework */,
+				291D11182678E667005ECFFA /* PirateChainPaymentURI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,7 +120,7 @@
 				292724112677A19900D5FF1A /* Sources */,
 				292724122677A19900D5FF1A /* Frameworks */,
 				292724132677A19900D5FF1A /* Resources */,
-				29167DF3267E1D7700DE52E9 /* Embed Frameworks */,
+				29F844502677BBC100C9D53E /* Embed Frameworks */,
 			);
 			buildRules = (
 				2EC79FFA68DBC94E2E6D902C /* PBXBuildRule */,

@@ -16,46 +16,61 @@ $ brew update
 $ brew install carthage
 ```
 
-To integrate BitcoinPaymentURISwift into your Xcode project using Carthage, specify it in your `Cartfile`:
+To integrate PirateChainPaymentURI into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
 github "Meshbits/PirateChainPaymentURISwift" "piratechain"
 ```
 
-Run `carthage update` to build the framework and drag the built `BitcoinPaymentURI.framework` into your Xcode project.
+Run `carthage update` to build the framework and drag the built `PirateChainPaymentURI.framework` into your Xcode project.
+
+Or In your project -> Targets -> Build Phases -> Link Binary with Libraries -> Import -> PirateChainPaymentURI.framework
+
+In your project -> Targets -> Frameworks, Libraries and Embedded Content -> PirateChainPaymentURI.framework -> Update it to Embed & Sign 
 
 # Usage
 
 ## Code
 
-Parse the URI `arrr://175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz`.
+Parse the URI `arrr:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz`.
 
 ```Swift
-guard let bpuri = BitcoinPaymentURI.parse("arrr://175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz") else {
-    return
-}
+   guard let pirateChainPaymentURI = PirateChainPaymentURI.parse("arrr:175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET") else {
+            return
+        }
 
-bpuri.address? \\ 175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W
-bpuri.amount? \\ 50
-bpuri.label? \\ "Luke-Jr"
-bpuri.message? \\ "Donation for project xyz"
-bpuri.parameters?.count \\ 0
+        print(pirateChainPaymentURI.address)
+        print(pirateChainPaymentURI.amount)
+        print(pirateChainPaymentURI.label)
+        print(pirateChainPaymentURI.message)
 ```
 
-Generate the following URI `arrr://175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?label=Luke-Jr&foo=bar&amount=50.0&message=Donation%20for%20project%20xyz&req-fiz=biz`
+In case you want to open the deep link to our Pirate Chain Wallet:
+
+https://github.com/Meshbits/pirate-chain-ios-wallet
+
+Parse the URI `arrr**://**175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz`.
 
 ```Swift
-let bpuri: BitcoinPaymentURI = BitcoinPaymentURI(build: {
-            $0.address = "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W"
-            $0.amount = 50.0
-            $0.label = "Luke-Jr"
-            $0.message = "Donation for project xyz"
+   guard let pirateChainPaymentURI = PirateChainPaymentURI.parse("arrr://175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET") else {
+            return
+        }
 
-            var newParameters: [String: Parameter] = [:]
+        print(pirateChainPaymentURI.address)
+        print(pirateChainPaymentURI.amount)
+        print(pirateChainPaymentURI.label)
+        print(pirateChainPaymentURI.message)
+```
 
-            newParameters["foo"] = Parameter(value: "bar", required: false)
-            newParameters["fiz"] = Parameter(value: "biz", required: true)
+Generatig the following URI `arrr://175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET`
 
-            $0.parameters = newParameters
-        })
+```Swift
+     let pirateChainPaymentURI: PirateChainPaymentURI = PirateChainPaymentURI.init(build: {
+                    $0.address = "175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk"
+                    $0.amount = 0.67
+                    $0.label = "Mr.ET"
+                    $0.message = "Bought pizza"
+                })
+
+        print(pirateChainPaymentURI.uri)
 ```
