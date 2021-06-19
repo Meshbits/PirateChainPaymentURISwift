@@ -31,7 +31,11 @@ class ViewController: UIViewController {
     }
     
     private func parseAPirateChainURI(){
-        guard let pirateChainPaymentURI = PirateChainPaymentURI.parse("arrr://175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET") else {
+
+//        guard let pirateChainPaymentURI = PirateChainPaymentURI.parse("arrr://175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET") else {
+
+        guard let pirateChainPaymentURI = PirateChainPaymentURI.parse("arrr:175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET") else {
+            print("NOT FOUND")
             return
         }
 

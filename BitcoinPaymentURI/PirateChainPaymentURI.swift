@@ -158,24 +158,51 @@ open class PirateChainPaymentURI: PirateChainPaymentURIProtocol {
      
       - returns: a PirateChainPaymentURI.
     */
-    public static func parse(_ pirateChainPaymentURI: String) -> PirateChainPaymentURI? {
-        let schemeRange = pirateChainPaymentURI.index(pirateChainPaymentURI.startIndex, offsetBy: 0)..<pirateChainPaymentURI.index(pirateChainPaymentURI.startIndex, offsetBy: SCHEME.count)
-        let paramReqRange = pirateChainPaymentURI.index(pirateChainPaymentURI.startIndex, offsetBy: 0)..<pirateChainPaymentURI.index(pirateChainPaymentURI.startIndex, offsetBy: PARAMETER_REQUIRED_PREFIX.count)
-
-        guard let _ = pirateChainPaymentURI.range(of: SCHEME, options: NSString.CompareOptions.caseInsensitive, range: schemeRange) else {
+    public static func parse(_ pirateChainPaymentURI: String?) -> PirateChainPaymentURI? {
+        
+        guard let pirateURI = pirateChainPaymentURI, !pirateURI.isEmpty else {
             return nil
         }
                 
-        let url:URL = URL(string: String(pirateChainPaymentURI))!
-        
-        guard let address = url.host else {
+        let schemeRange = pirateURI.index(pirateURI.startIndex, offsetBy: 0)..<pirateURI.index(pirateURI.startIndex, offsetBy: SCHEME.count)
+        let paramReqRange = pirateURI.index(pirateURI.startIndex, offsetBy: 0)..<pirateURI.index(pirateURI.startIndex, offsetBy: PARAMETER_REQUIRED_PREFIX.count)
+
+        guard let _ = pirateURI.range(of: SCHEME, options: NSString.CompareOptions.caseInsensitive, range: schemeRange) else {
             return nil
         }
+        
+        if !pirateURI.starts(with: "arrr") {
+            // Checking if arrr is there in the address
+            return nil
+        }
+        
+        let url:URL = URL(string: String(pirateURI))!
+        
+        var anAddress = ""
+        
+        // Use case for deep link
+        if pirateURI.hasPrefix("arrr://"){
+            guard let address = url.host else {
+                return nil
+            }
+            anAddress = address
+        }else if pirateURI.hasPrefix("arrr:"){
+            // Use case for payment URI
+            let urlComponents = URLComponents(string: String(pirateURI))
+                    
+            guard let address = urlComponents?.path, !address.isEmpty else {
+               return nil
+            }
+            anAddress = address
+        }else{
+            return nil
+        }
+        
 
         let urlComponents = QueryParameters.init(url: url).queryItems
       
         return PirateChainPaymentURI(build: {
-            $0.address = address
+            $0.address = anAddress
             var newParameters: [String: Parameter] = [:]
             
             if urlComponents.count > 0 {

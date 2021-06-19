@@ -8,10 +8,10 @@
 #import <UIKit/UIKit.h>
 
 //! Project version number for PirateChainPaymentURI.
-FOUNDATION_EXPORT double BitcoinPaymentURIVersionNumber;
+FOUNDATION_EXPORT double PirateChainPaymentURIVersionNumber;
 
 //! Project version string for PirateChainPaymentURI.
-FOUNDATION_EXPORT const unsigned char BitcoinPaymentURIVersionString[];
+FOUNDATION_EXPORT const unsigned char PirateChainPaymentURIVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <PirateChainPaymentURI/PublicHeader.h>
 
