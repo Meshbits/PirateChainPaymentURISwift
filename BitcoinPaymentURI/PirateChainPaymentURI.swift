@@ -22,6 +22,8 @@ open class PirateChainPaymentURI: PirateChainPaymentURIProtocol {
 
     fileprivate var allParameters: [String: Parameter]?
 
+    open var isDeepLink: Bool?
+    
     /// The address.
     open var address: String?
     
@@ -136,7 +138,17 @@ open class PirateChainPaymentURI: PirateChainPaymentURIProtocol {
                 
                 urlComponents.queryItems?.append(URLQueryItem(name: key, value: value.value))
             }
-            return urlComponents.string
+            
+            if isDeepLink == true {
+                return urlComponents.string
+            }else{
+                
+                if let url = urlComponents.string {
+                    return url.replacingOccurrences(of: "arrr://", with: "arrr:")
+                }
+                
+                return nil
+            }
         }
     }
     

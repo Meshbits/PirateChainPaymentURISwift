@@ -18,11 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
-
-		69A3ED9EA6CA814D4B6D902C /* PBXBuildRule */ = {
-
 		2EC79FFA68DBC94E2E6D902C /* PBXBuildRule */ = {
-
 			isa = PBXBuildRule;
 			compilerSpec = com.apple.compilers.proxy.script;
 			fileType = folder.assetcatalog;
@@ -127,8 +123,7 @@
 				29F844502677BBC100C9D53E /* Embed Frameworks */,
 			);
 			buildRules = (
-
-				69A3ED9EA6CA814D4B6D902C /* PBXBuildRule */,
+				2EC79FFA68DBC94E2E6D902C /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
