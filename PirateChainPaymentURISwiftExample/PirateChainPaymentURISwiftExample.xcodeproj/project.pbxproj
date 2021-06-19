@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29167DF1267E1D7700DE52E9 /* PirateChainPaymentURI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29167DEF267E1D6E00DE52E9 /* PirateChainPaymentURI.framework */; };
-		29167DF2267E1D7700DE52E9 /* PirateChainPaymentURI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29167DEF267E1D6E00DE52E9 /* PirateChainPaymentURI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		292724192677A19900D5FF1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292724182677A19900D5FF1A /* AppDelegate.swift */; };
 		2927241B2677A19900D5FF1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927241A2677A19900D5FF1A /* SceneDelegate.swift */; };
 		2927241D2677A19900D5FF1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927241C2677A19900D5FF1A /* ViewController.swift */; };
@@ -40,7 +38,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				29167DF2267E1D7700DE52E9 /* PirateChainPaymentURI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,7 +45,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		29167DEF267E1D6E00DE52E9 /* PirateChainPaymentURI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PirateChainPaymentURI.framework; path = Carthage/Build/iOS/PirateChainPaymentURI.framework; sourceTree = "<group>"; };
 		292724152677A19900D5FF1A /* PirateChainPaymentURISwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PirateChainPaymentURISwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		292724182677A19900D5FF1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2927241A2677A19900D5FF1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29167DF1267E1D7700DE52E9 /* PirateChainPaymentURI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +100,6 @@
 		29F844462677B9D200C9D53E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				29167DEF267E1D6E00DE52E9 /* PirateChainPaymentURI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
