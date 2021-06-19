@@ -25,7 +25,6 @@ class ViewController: UIViewController {
                     $0.amount = 0.67
                     $0.label = "Mr.ET"
                     $0.message = "Bought pizza"
-                    $0.isDeepLink = true
                 })
 
         print(pirateChainPaymentURI.uri)
